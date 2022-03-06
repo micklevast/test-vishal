@@ -14,13 +14,13 @@ const Home = () => {
 
     let navigate = useNavigate();
     // look here
-    useEffect(() => {
-        const user = Cookies.get("user")
-        if (user.length != 0) {
-            // navigate('/login')
-            setlogged(false);
-        }
-    }, [logged])
+    // useEffect(() => {
+    //     const user = Cookies.get("user")
+    //     if (user.length != 0) {
+    //         // navigate('/login')
+    //         // setlogged(false);
+    //     }
+    // }, [logged])
 
     console.log(logged)
     const HandleSubmit = async (e) => {

@@ -8,20 +8,24 @@ import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 
 const App = () => {
-  const PrivateRoute = ({ auth: { isAuthenticated }, children }) => {
-    return isAuthenticated ? children : <Navigate to="/login" />;
-  };
+  const [logged, setlogged] = useState(Cookies.get('user') && Cookies.get('user').length !== '')
+  //remove this nigga
+  useEffect(() => {
+    Cookies.set('user', 'fucking user')
+  }, [])
+
+  console.log('rendered')
+  
 
   return (
     <>
-
       <Navbar />
       <BrowserRouter>
         <Routes>
-          <Route path="/"  element={<Home />} />
+          <Route path="/" element={logged ? <Home /> : <Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={<Dashbaord />} />
+          <Route path="/dashboard" element={logged ? <Dashbaord /> : <Navigate to="/login" />} />
         </Routes>
       </BrowserRouter>
     </>
